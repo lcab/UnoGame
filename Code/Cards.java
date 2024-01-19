@@ -8,10 +8,5 @@ public class Cards {
 
     }
 
-    public Cards(int )
-    {
 
-    }
-
-    Get
 }

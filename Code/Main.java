@@ -3,27 +3,34 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Dimension;
 import java.io.IOException;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Main extends javax.swing.JFrame {
+public class Main extends JFrame {
+   
    Image img = Toolkit.getDefaultToolkit().getImage("C:\\Users\\loren\\Personal\\unocards\\background\\background.jpg");
+
    public Main() throws IOException {
-      this.setContentPane(new JPanel() {
+      setContentPane(new JPanel() {
          @Override
-         public void paintComponent(Graphics g) {
+         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.drawImage(img, 0, 0, null);
+            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
          }
       });
 
       pack();
-      setVisible(true);
-        Toolkit toolKit = getToolkit();
+
+      Toolkit toolKit = getToolkit();
       Dimension size = toolKit.getScreenSize();
-      //center the background
-      setLocation(size.width/2- getWidth()/2, size.height/2 - getHeight()/2);
+      setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
+
       setDefaultCloseOperation(EXIT_ON_CLOSE);
+      setResizable(false); // Optional: To prevent resizing of the JFrame
+      setVisible(true);
    }
+
    public static void main(String[] args) throws Exception {
       new Main();
    }
